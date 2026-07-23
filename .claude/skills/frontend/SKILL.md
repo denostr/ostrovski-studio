@@ -82,6 +82,17 @@ reset і токенів у `@theme`. Увесь UI стилізується ру
   фон `--panel`, анімація `om-fadeup`.
 - Alpine: компоненти реєструються через `Alpine.data()` в `app.js`; відкриття
   модалки — window-івент (`enquiry-open`), не прямі виклики між компонентами.
+- Мобільне меню: бургер (`.burger`, 3 span, морфиться в X) + `.menu-overlay`.
+  Стан — `Alpine.data('mobileMenu')` на `.app`-обгортці (layout); оверлей
+  телепортується в `<body>` (`x-teleport`), інакше його z-index замкнувся б у
+  stacking-контексті фіксованого топбару. При відкритті: scroll-lock на
+  `documentElement` (НЕ body — `html{overflow-x:hidden}` не пускає overflow
+  body до viewport), `inert` на `main`/`.footer`, повернення фокусу на бургер
+  при закритті.
+- **z-index — тільки зі шкали** (коментар-драбина зверху app.css): 60 топбар /
+  70 cookie-бар / 80 меню-оверлей / 85 топбар-при-відкритому-меню / 90 модалка /
+  95 cookie-шіт / 100 skip-link. Новий fixed-шар — на вільну сходинку, не
+  довільне число.
 - Ховери: колір/бордер із transition .3s ease; зум фото в картках
   `transform .9s cubic-bezier(.2,.7,.2,1)`.
 

@@ -5,4 +5,5 @@ return [
     'skip_to_content' => 'Skip to content',
     'nav_services' => 'Services',
     'nav_language' => 'Language',
+    'menu' => 'Menu',
 ];

@@ -5,4 +5,5 @@ return [
     'skip_to_content' => 'Zum Inhalt springen',
     'nav_services' => 'Leistungen',
     'nav_language' => 'Sprache',
+    'menu' => 'Menü',
 ];

@@ -23,6 +23,24 @@ class PublicPagesTest extends TestCase
             ->assertSee('Mit Ostrovski arbeiten');
     }
 
+    public function test_the_mobile_burger_menu_is_present_and_translated(): void
+    {
+        // The burger toggles the overlay that carries the nav links and the
+        // language switcher on mobile — its translated aria-label and the
+        // overlay's service anchors are the contract a refactor must keep.
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('class="burger"', false)
+            ->assertSee('aria-label="'.__('common.menu').'"', false)
+            ->assertSee('class="menu-overlay"', false)
+            ->assertSee('#services-dj', false)
+            ->assertSee('#services-show', false);
+
+        $this->get('/de')
+            ->assertOk()
+            ->assertSee('aria-label="'.__('common.menu').'"', false);
+    }
+
     public function test_legal_pages_render_in_both_locales(): void
     {
         foreach (config('ostrovski.legal') as $page) {

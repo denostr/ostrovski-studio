@@ -207,6 +207,18 @@ a:hover {
 }
 
 /* =========================================================
+   z-index scale — the site's fixed/overlay layers, low → high.
+   Keep every fixed-position layer on one of these rungs.
+     60  topbar
+     70  cookie bar
+     80  mobile menu overlay (teleported to <body>)
+     85  topbar while the menu is open (burger stays clickable over it)
+     90  enquiry modal
+     95  cookie preferences sheet
+    100  skip link
+   ========================================================= */
+
+/* =========================================================
    Topbar
    ========================================================= */
 .topbar {
@@ -272,12 +284,94 @@ a:hover {
     color: var(--accent);
 }
 
-/* The service links get long in German — hide them on narrow screens,
-   the services section is one scroll away anyway. */
+/* =========================================================
+   Burger + mobile menu overlay
+   On narrow screens the nav links and the language switcher
+   move from the bar into the overlay; the burger replaces them.
+   ========================================================= */
+/* While the menu is open, lift the whole topbar above the teleported
+   overlay (z 80) so the burger stays clickable to morph into the close X. */
+.topbar.menu-open {
+    z-index: 85;
+}
+
+.burger {
+    display: none;
+    position: relative;
+    z-index: 82;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+
+.burger span {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: var(--white);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.burger.open span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(40px, 8svh, 72px);
+    /* Opaque graphite panel — a near-solid --bg. No backdrop-filter: the
+       page behind is fully covered, so a blur pass would be invisible work
+       (and jank on low-end mobile, the only place the overlay renders). */
+    background: color-mix(in srgb, var(--bg) 98%, #000);
+}
+
+.menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 4svh, 36px);
+}
+
+.menu-nav a {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--white);
+}
+
+.menu-overlay .lang-switch {
+    font-size: 14px;
+    letter-spacing: 0.16em;
+}
+
 @media (max-width: 760px) {
     .topnav,
-    .topbar-divider {
+    .topbar-divider,
+    .topbar-right > .lang-switch {
         display: none;
+    }
+
+    .burger {
+        display: flex;
     }
 }
 

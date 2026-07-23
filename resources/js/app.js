@@ -259,6 +259,43 @@ Alpine.data('enquiry', (config) => ({
     },
 }));
 
+/**
+ * The mobile burger menu. State lives on the layout's `.app` wrapper so
+ * the overlay (teleported to <body> to escape the fixed topbar's stacking
+ * context) and the background regions can all react to it.
+ *
+ * While open: the page background (main, footer) is made inert so keyboard
+ * focus can't wander behind the overlay, and the scroll lock is applied to
+ * <html> — locking <body> would be a no-op because `html { overflow-x:
+ * hidden }` stops body's overflow from propagating to the viewport.
+ */
+Alpine.data('mobileMenu', () => ({
+    open: false,
+
+    toggle() {
+        this.open = ! this.open;
+    },
+
+    close() {
+        this.open = false;
+    },
+
+    init() {
+        this.$watch('open', (open) => {
+            document.documentElement.style.overflow = open ? 'hidden' : '';
+            document.querySelectorAll('main, .footer').forEach((el) => {
+                el.inert = open;
+            });
+            // Return focus to the burger when the menu closes (Escape,
+            // resize, or a link tap), so keyboard users aren't dropped to
+            // the top of the document.
+            if (! open) {
+                this.$refs.burger?.focus();
+            }
+        });
+    },
+}));
+
 window.Alpine = Alpine;
 
 Alpine.start();

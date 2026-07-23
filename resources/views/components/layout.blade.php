@@ -95,7 +95,7 @@
     {{-- x-data on the page wrapper makes it an Alpine root — without it,
          Alpine never initialises @click directives on the service cards and
          the footer's cookie-settings button (they'd be dead markup). --}}
-    <div x-data>
+    <div class="app" x-data="mobileMenu()">
         <x-topbar/>
 
         <main id="main">

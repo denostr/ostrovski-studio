@@ -1,9 +1,4 @@
-@php
-    // The language switcher must land on the *current* page in the other
-    // locale — same inputs as the layout's hreflang block.
-    ['name' => $langBaseName, 'params' => $langParams] = current_route_base();
-@endphp
-<header class="topbar">
+<header class="topbar" :class="{ 'menu-open': open }">
     <a class="brand" href="{{ loc_route('home') }}">OSTROVSKI</a>
 
     <div class="topbar-right">
@@ -15,17 +10,31 @@
 
         <span class="topbar-divider" aria-hidden="true"></span>
 
-        <div class="lang-switch" role="group" aria-label="{{ __('common.nav_language') }}">
-            @foreach (config('ostrovski.locales') as $loc)
-                @unless ($loop->first)<span class="sep" aria-hidden="true">/</span>@endunless
-                {{-- `?_lang=` signals an explicit user choice — the SetLocale
-                     middleware persists it in the year-long `locale` cookie
-                     and 302s to a clean URL, so the GeoIP auto-redirect
-                     won't bounce the visitor back to /de on the next visit. --}}
-                <a href="{{ loc_route($langBaseName, $langParams, $loc) }}?_lang={{ $loc }}"
-                   @class(['active' => app()->getLocale() === $loc])
-                   @if (app()->getLocale() === $loc) aria-current="true" @endif>{{ strtoupper($loc) }}</a>
-            @endforeach
-        </div>
+        <x-lang-switch/>
+
+        <button type="button" class="burger" x-ref="burger"
+                :class="{ open }"
+                :aria-expanded="open"
+                @click="toggle()"
+                aria-label="{{ __('common.menu') }}">
+            <span></span><span></span><span></span>
+        </button>
     </div>
+
+    {{-- Mobile overlay: the same service links + language switcher that live
+         in the bar on desktop. Teleported to <body> so its z-index is not
+         trapped inside the fixed topbar's stacking context (otherwise the
+         cookie banner would paint over it). Closes on link tap, Escape, or a
+         resize back to desktop width. --}}
+    <template x-teleport="body">
+        <div class="menu-overlay" x-show="open" x-cloak x-transition.opacity
+             @keydown.escape.window="close()"
+             @resize.window.debounce.150ms="window.innerWidth > 760 && close()">
+            <nav class="menu-nav" aria-label="{{ __('common.nav_services') }}">
+                <a href="{{ loc_route('home') }}#services-dj" @click="close()">{{ __('services.cat_dj') }}</a>
+                <a href="{{ loc_route('home') }}#services-show" @click="close()">{{ __('services.cat_show') }}</a>
+            </nav>
+            <x-lang-switch/>
+        </div>
+    </template>
 </header>
