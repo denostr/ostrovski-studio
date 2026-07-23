@@ -77,7 +77,7 @@
                     <span class="cat-label">{{ __('services.cat_dj') }}</span>
                 </div>
                 <div class="cards-pair">
-                    <x-service-card service="dj" image="media/IMG_5282.webp" position="50% 8%"/>
+                    <x-service-card service="dj" image="media/IMG_5282.webp" position="50% 50%"/>
                     <x-service-card service="dj_lessons" image="media/IMG_5234.webp" position="50% 12%"/>
                 </div>
             </div>
