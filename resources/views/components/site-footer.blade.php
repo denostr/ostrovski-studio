@@ -9,7 +9,7 @@
             <div class="footer-col">
                 <span class="footer-col-label">{{ __('footer.legal') }}</span>
                 @foreach (config('ostrovski.legal') as $page)
-                    <a href="{{ loc_route('legal', ['page' => $page]) }}">{{ __('legal.'.$page.'.title') }}</a>
+                    <a href="{{ loc_route('legal', ['page' => $page]) }}">{{ __('legal.nav.'.$page) }}</a>
                 @endforeach
             </div>
             <div class="footer-col">
