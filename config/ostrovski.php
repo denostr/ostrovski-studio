@@ -87,7 +87,7 @@ return [
     'email' => env('OSTROVSKI_EMAIL', 'info@ostrovski.studio'),
 
     'social' => [
-        'instagram' => env('SOCIAL_INSTAGRAM') ?: 'https://instagram.com',
+        'instagram' => env('SOCIAL_INSTAGRAM') ?: 'https://www.instagram.com/ostrovski.official',
     ],
 
     /*

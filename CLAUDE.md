@@ -52,8 +52,9 @@ Email через SMTP. Anti-spam: Cloudflare Turnstile + honeypot.
   проєктного шрифта ImageMagick-ом: `label:"O"` (Cormorant Garamond 600 woff з
   node_modules/@fontsource) кольором `#c8a37a`, trim, композиція по центру
   канви 512² `#16171a`, далі `-define icon:auto-resize=48,32,16`.
-- Деплой на прод — буде команда `/deploy` за зразком heels (написати при
-  першому деплої; поки що прод-оточення немає).
+- Деплой на прод — командою `/deploy` (git pre-flight → пайп `bin/deploy.sh`
+  через SSH-аліас `ostrovski`; застосунок на droplet у `/var/www/ostr`, живе
+  на https://ostrovski.studio). Ручні SSH-деплої не імпровізувати.
 
 ## Поза скоупом
 Адмінка · БД · онлайн-оплата · лист-підтвердження відправнику · сайт Heels On.
