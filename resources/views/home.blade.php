@@ -38,7 +38,7 @@
 
         <div class="about-row about-row-flip">
             <div class="about-media">
-                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5286.webp') }}')"></div>
+                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5285.webp') }}')"></div>
             </div>
             <div class="about-text">
                 <p>{{ __('home.about.p3') }}</p>
@@ -53,7 +53,7 @@
                 <p>{{ __('home.about.p7') }}</p>
             </div>
             <div class="about-media">
-                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5282.webp') }}')"></div>
+                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5287.webp') }}')"></div>
             </div>
         </div>
 
