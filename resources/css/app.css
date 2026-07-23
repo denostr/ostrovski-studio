@@ -561,18 +561,36 @@ a:hover {
     color: var(--muted);
 }
 
+/* The DJ pair stacks at the same 760px breakpoint that switches the wide
+   card back to the base 4:5 shape below — one threshold, so all three
+   cards always read as one set at any width. */
 .cards-pair {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    grid-template-columns: 1fr;
     gap: clamp(20px, 2.4vw, 40px);
 }
 
+@media (min-width: 761px) {
+    .cards-pair {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* The aspect-ratio is a preferred shape, not a hard cap: the copy sits in
+   normal flow, and `overflow: clip` (unlike `hidden`, which would make the
+   card a scroll container and zero out the automatic minimum) lets the
+   card grow taller when a long title needs more room — while still
+   clipping the hover-zoomed photo. */
 .service-card {
     position: relative;
     aspect-ratio: 4 / 5;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    padding: clamp(24px, 2.4vw, 40px);
     width: 100%;
-    overflow: hidden;
+    overflow: clip;
     text-align: left;
     border: 1px solid var(--line);
     transition: border-color 0.3s ease;
@@ -582,8 +600,13 @@ a:hover {
     border-color: var(--fg);
 }
 
-.service-card-wide {
-    aspect-ratio: 16 / 10;
+/* The wide 16:10 show card is a desktop-only shape — below the breakpoint
+   the base 4:5 declarations apply untouched, nothing to counter-override. */
+@media (min-width: 761px) {
+    .service-card-wide {
+        aspect-ratio: 16 / 10;
+        padding: clamp(24px, 2.4vw, 44px);
+    }
 }
 
 .card-img {
@@ -597,8 +620,10 @@ a:hover {
     transform: scale(1.05);
 }
 
-.service-card-wide:hover .card-img {
-    transform: scale(1.04);
+@media (min-width: 761px) {
+    .service-card-wide:hover .card-img {
+        transform: scale(1.04);
+    }
 }
 
 .card-shade {
@@ -607,20 +632,10 @@ a:hover {
     background: linear-gradient(180deg, rgba(22, 23, 26, 0.1) 30%, rgba(22, 23, 26, 0.9));
 }
 
-.card-content {
-    position: absolute;
-    inset: 0;
-    padding: clamp(24px, 2.4vw, 40px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.service-card-wide .card-content {
-    padding: clamp(24px, 2.4vw, 44px);
-}
-
+/* The kicker and body participate in the card's own flex flow; positioned
+   so they paint above the absolutely-positioned photo and shade. */
 .card-kicker {
+    position: relative;
     font-family: var(--f-mono);
     font-size: 12px;
     letter-spacing: 0.26em;
@@ -629,13 +644,10 @@ a:hover {
 }
 
 .card-body {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 14px;
-}
-
-.service-card-wide .card-body {
-    max-width: 44ch;
 }
 
 .card-title {
@@ -643,11 +655,6 @@ a:hover {
     font-weight: 500;
     font-size: clamp(28px, 3vw, 46px);
     line-height: 1;
-}
-
-.service-card-wide .card-title {
-    font-size: clamp(28px, 3.4vw, 52px);
-    line-height: 1.02;
 }
 
 .card-desc {
@@ -658,8 +665,19 @@ a:hover {
     max-width: 38ch;
 }
 
-.service-card-wide .card-desc {
-    max-width: 44ch;
+@media (min-width: 761px) {
+    .service-card-wide .card-body {
+        max-width: 44ch;
+    }
+
+    .service-card-wide .card-title {
+        font-size: clamp(28px, 3.4vw, 52px);
+        line-height: 1.02;
+    }
+
+    .service-card-wide .card-desc {
+        max-width: 44ch;
+    }
 }
 
 .card-cta {

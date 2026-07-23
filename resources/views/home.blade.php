@@ -10,7 +10,7 @@
             <p class="hero-lead">{{ __('common.tagline') }}</p>
         </div>
         <div class="hero-media">
-            <div class="hero-img" style="background-image:url('{{ asset('media/IMG_5283.JPG') }}')"></div>
+            <div class="hero-img" style="background-image:url('{{ asset('media/IMG_5283.webp') }}')"></div>
             <div class="hero-shade"></div>
         </div>
     </section>
@@ -32,13 +32,13 @@
                 <p>{{ __('home.about.p2') }}</p>
             </div>
             <div class="about-media">
-                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5234.JPG') }}')"></div>
+                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5234.webp') }}')"></div>
             </div>
         </div>
 
         <div class="about-row about-row-flip">
             <div class="about-media">
-                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5286.JPG') }}')"></div>
+                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5286.webp') }}')"></div>
             </div>
             <div class="about-text">
                 <p>{{ __('home.about.p3') }}</p>
@@ -53,7 +53,7 @@
                 <p>{{ __('home.about.p7') }}</p>
             </div>
             <div class="about-media">
-                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5282.JPG') }}')"></div>
+                <div class="about-img" style="background-image:url('{{ asset('media/IMG_5282.webp') }}')"></div>
             </div>
         </div>
 
@@ -77,8 +77,8 @@
                     <span class="cat-label">{{ __('services.cat_dj') }}</span>
                 </div>
                 <div class="cards-pair">
-                    <x-service-card service="dj" image="media/IMG_5282.JPG" position="50% 8%"/>
-                    <x-service-card service="dj_lessons" image="media/IMG_5234.JPG" position="50% 12%"/>
+                    <x-service-card service="dj" image="media/IMG_5282.webp" position="50% 8%"/>
+                    <x-service-card service="dj_lessons" image="media/IMG_5234.webp" position="50% 12%"/>
                 </div>
             </div>
 
@@ -87,7 +87,7 @@
                     <span class="cat-no">/ 02</span>
                     <span class="cat-label">{{ __('services.cat_show') }}</span>
                 </div>
-                <x-service-card service="choreo" image="media/IMG_5286.JPG" position="50% 22%" wide/>
+                <x-service-card service="choreo" image="media/IMG_5286.webp" position="50% 22%" wide/>
             </div>
         </div>
     </section>

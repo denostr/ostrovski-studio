@@ -44,7 +44,8 @@
     <meta name="description" content="{{ $pageDescription }}">
     <link rel="canonical" href="{{ $canonical }}">
 
-    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="32x32">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     <meta name="theme-color" content="#16171a">
 
     @foreach (config('ostrovski.locales') as $alt)

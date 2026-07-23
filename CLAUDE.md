@@ -44,7 +44,14 @@ Email через SMTP. Anti-spam: Cloudflare Turnstile + honeypot.
   `resources/views/**/*.blade.php` (крім `emails/`); або вручну — `/frontend`.
 - Тимчасові файли — лише `./tmp/`. Комміти/пуш — лише за явним запитом.
 - Медіа (фото) — поза git (`public/media/`), зберігається й розгортається
-  окремо. Фото з дизайн-проєкту (uploads/IMG_*.JPG) треба покласти туди вручну.
+  окремо. В'юхи посилаються на WebP-варіанти, які генерує `php artisan
+  media:optimize` з JPG-оригіналів (мапа розмірів/якості —
+  `config/ostrovski.php` → `media`; guard-тест у PublicPagesTest пильнує, щоб
+  кожен референс мав entry). Перезапускати після додавання/заміни оригіналів.
+- Фавікон (`public/favicon.ico`, `apple-touch-icon.png`) згенеровано з
+  проєктного шрифта ImageMagick-ом: `label:"O"` (Cormorant Garamond 600 woff з
+  node_modules/@fontsource) кольором `#c8a37a`, trim, композиція по центру
+  канви 512² `#16171a`, далі `-define icon:auto-resize=48,32,16`.
 - Деплой на прод — буде команда `/deploy` за зразком heels (написати при
   першому деплої; поки що прод-оточення немає).
 

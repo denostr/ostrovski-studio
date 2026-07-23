@@ -53,6 +53,27 @@ class PublicPagesTest extends TestCase
             ->assertSee('id="services-show"', false);
     }
 
+    public function test_every_referenced_media_file_has_a_generator_entry(): void
+    {
+        // The views reference .webp files that exist only as media:optimize
+        // output inside the gitignored public/media/ — a reference without
+        // a config('ostrovski.media') entry would ship as a silently empty
+        // background box (no 404, no broken-image icon).
+        $html = $this->get('/')->assertOk()->getContent();
+
+        preg_match_all('#media/([\w-]+)\.webp#', $html, $matches);
+
+        $this->assertNotEmpty($matches[1], 'The home page references no media files — selector drift?');
+
+        foreach (array_unique($matches[1]) as $name) {
+            $this->assertArrayHasKey(
+                $name,
+                config('ostrovski.media'),
+                "media/$name.webp is referenced by the home page but has no config('ostrovski.media') entry — media:optimize would never generate it",
+            );
+        }
+    }
+
     public function test_every_configured_service_has_copy_in_every_locale(): void
     {
         // A service added to config without lang keys degrades silently —
