@@ -2,7 +2,9 @@
     <a class="brand" href="{{ loc_route('home') }}">OSTROVSKI</a>
 
     <div class="topbar-right">
-        <nav class="topnav" aria-label="{{ __('common.nav_services') }}">
+        <nav class="topnav" aria-label="{{ __('common.nav_primary') }}">
+            <a href="{{ loc_route('home') }}#about">{{ __('home.about.label') }}</a>
+            <span class="dot" aria-hidden="true">·</span>
             <a href="{{ loc_route('home') }}#services-dj">{{ __('services.cat_dj') }}</a>
             <span class="dot" aria-hidden="true">·</span>
             <a href="{{ loc_route('home') }}#services-show">{{ __('services.cat_show') }}</a>
@@ -30,7 +32,8 @@
         <div class="menu-overlay" x-show="open" x-cloak x-transition.opacity
              @keydown.escape.window="close()"
              @resize.window.debounce.150ms="window.innerWidth > 760 && close()">
-            <nav class="menu-nav" aria-label="{{ __('common.nav_services') }}">
+            <nav class="menu-nav" aria-label="{{ __('common.nav_primary') }}">
+                <a href="{{ loc_route('home') }}#about" @click="close()">{{ __('home.about.label') }}</a>
                 <a href="{{ loc_route('home') }}#services-dj" @click="close()">{{ __('services.cat_dj') }}</a>
                 <a href="{{ loc_route('home') }}#services-show" @click="close()">{{ __('services.cat_show') }}</a>
             </nav>

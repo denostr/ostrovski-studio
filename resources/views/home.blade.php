@@ -16,7 +16,7 @@
     </section>
 
     {{-- ABOUT longread --}}
-    <section class="about">
+    <section id="about" class="about">
         <div class="section-head">
             <span class="section-no">(02)</span>
             <span class="section-label">{{ __('home.about.label') }}</span>
