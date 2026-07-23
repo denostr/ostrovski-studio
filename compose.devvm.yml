@@ -1,0 +1,24 @@
+# Dev-VM overlay: route the Sail app through the VM Traefik (edge, websecure)
+# at ostr.dev.geek.cx.ua. Applied on top of compose.yaml:
+#   docker compose -f compose.yaml -f compose.devvm.yml -p ostr up -d
+# restart:unless-stopped so the stack auto-recovers on VM reboot/blackout
+# (pve2 has no UPS). Host ports reset — Traefik owns :80, routing only via edge.
+services:
+  laravel.test:
+    restart: unless-stopped
+    ports: !reset []
+    networks:
+      - sail
+      - edge
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.ostr.rule=Host(`ostr.dev.geek.cx.ua`)"
+      - traefik.http.routers.ostr.entrypoints=websecure
+      - traefik.http.routers.ostr.tls=true
+      - traefik.http.services.ostr.loadbalancer.server.port=80
+  mailpit:
+    restart: unless-stopped
+    ports: !reset []
+networks:
+  edge:
+    external: true
