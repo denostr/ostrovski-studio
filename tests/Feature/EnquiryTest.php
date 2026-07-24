@@ -19,6 +19,7 @@ class EnquiryTest extends TestCase
             'phone' => '+49 123 456789',
             'email' => 'test@example.com',
             'message' => 'Hello, I would like to book a DJ set.',
+            'consent' => true,
         ];
     }
 
@@ -45,6 +46,17 @@ class EnquiryTest extends TestCase
         $this->postJson('/de/enquiry', $this->validPayload())->assertOk();
 
         Mail::assertSent(EnquiryReceived::class);
+    }
+
+    public function test_an_enquiry_without_consent_is_rejected(): void
+    {
+        Mail::fake();
+
+        $this->postJson('/enquiry', [...$this->validPayload(), 'consent' => false])
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['consent']);
+
+        Mail::assertNothingSent();
     }
 
     public function test_missing_fields_fail_validation(): void

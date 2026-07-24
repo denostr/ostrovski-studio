@@ -1113,6 +1113,43 @@ a:hover {
     text-align: center;
 }
 
+.consent-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.consent-field input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.consent-field input.error {
+    outline: 1px solid var(--error);
+    outline-offset: 2px;
+}
+
+.consent-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+.consent-text a {
+    color: var(--fg);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.consent-text a:hover {
+    color: var(--accent);
+}
+
 .btn-submit {
     margin-top: 8px;
     padding: 18px;

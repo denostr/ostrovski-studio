@@ -73,6 +73,12 @@
                 <div class="cf-turnstile" data-sitekey="{{ config('services.turnstile.site_key') }}" data-theme="dark"></div>
             @endif
 
+            <label class="consent-field">
+                <input type="checkbox" x-model="form.consent" :class="{ error: fieldError('consent') }">
+                <span class="consent-text">{{ __('enquiry.consent_before') }}<a href="{{ loc_route('legal', ['page' => 'datenschutz']) }}" target="_blank" rel="noopener">{{ __('enquiry.consent_link') }}</a>{{ __('enquiry.consent_after') }}</span>
+            </label>
+            <span class="field-error" x-show="fieldError('consent')" x-text="fieldError('consent')"></span>
+
             <p class="form-general-error" x-show="generalError()" x-text="generalError()" x-cloak></p>
 
             <button type="submit" class="btn btn-solid btn-submit" :disabled="loading" :class="{ loading }">

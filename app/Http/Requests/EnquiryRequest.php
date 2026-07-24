@@ -36,6 +36,9 @@ class EnquiryRequest extends FormRequest
             'phone' => ['nullable', 'string', 'max:40'],
             'email' => ['required', 'email', 'max:190'],
             'message' => ['required', 'string', 'max:3000'],
+            // Explicit privacy consent (GDPR Art. 6(1)(a)) — the enquiry
+            // form transmits personal data, so the box must be ticked.
+            'consent' => ['accepted'],
             // Anti-spam: an invisible field only bots fill in (`prohibited`
             // fails on any non-empty value), plus the Cloudflare Turnstile
             // token. The token must be `required` whenever the widget is
@@ -62,6 +65,7 @@ class EnquiryRequest extends FormRequest
             'email.required' => __('enquiry.errors.email'),
             'email.email' => __('enquiry.errors.email_valid'),
             'message.required' => __('enquiry.errors.message'),
+            'consent.accepted' => __('enquiry.errors.consent'),
             'website.prohibited' => __('enquiry.errors.spam'),
             'cf-turnstile-response.required' => __('enquiry.errors.captcha'),
         ];

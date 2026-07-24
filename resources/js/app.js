@@ -171,6 +171,7 @@ Alpine.data('enquiry', (config) => ({
             phone: '',
             email: '',
             message: '',
+            consent: false,
             website: '',
         };
         this.visible = true;
