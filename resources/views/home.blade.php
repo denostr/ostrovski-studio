@@ -73,7 +73,6 @@
         <div class="services-groups">
             <div id="services-dj" class="services-group">
                 <div class="cat-head">
-                    <span class="cat-no">/ 01</span>
                     <span class="cat-label">{{ __('services.cat_dj') }}</span>
                 </div>
                 <div class="cards-pair">
@@ -84,7 +83,6 @@
 
             <div id="services-show" class="services-group">
                 <div class="cat-head">
-                    <span class="cat-no">/ 02</span>
                     <span class="cat-label">{{ __('services.cat_show') }}</span>
                 </div>
                 <x-service-card service="choreo" image="media/IMG_5283.webp" position="50% 22%" wide/>

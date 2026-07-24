@@ -639,19 +639,11 @@ a:hover {
     margin-bottom: clamp(20px, 2.4vw, 32px);
 }
 
-.cat-no,
 .cat-label {
     font-family: var(--f-mono);
     font-size: 12px;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-}
-
-.cat-no {
-    color: var(--accent);
-}
-
-.cat-label {
     color: var(--muted);
 }
 
