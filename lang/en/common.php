@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'tagline' => 'Music and movement as one — cinematic sets and stage performance for sophisticated club audiences.',
+    'tagline' => 'Music and movement as one — unique sets and stage performance for entertainment experiences.',
     'skip_to_content' => 'Skip to content',
     'nav_primary' => 'Primary navigation',
     'nav_language' => 'Language',

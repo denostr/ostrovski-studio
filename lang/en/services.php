@@ -11,19 +11,19 @@ return [
     'dj' => [
         'kicker' => '01 / DJ',
         'title' => 'DJ for your Event',
-        'desc' => "Club-ready DJ sets rooted in electronic music, adapted to your event's atmosphere.",
+        'desc' => "Custom DJ sets rooted in electronic music, adapted to your event's atmosphere.",
     ],
 
     'dj_lessons' => [
         'kicker' => '02 / Lessons',
         'title' => 'DJ Lessons',
-        'desc' => 'One-to-one and small-group lessons — from your first mix to club-ready sets.',
+        'desc' => 'Private DJ lessons — for beginners to advanced.',
     ],
 
     'choreo' => [
         'kicker' => '03 / Show',
         'title' => 'Show Director / Choreographer for your Event',
-        'desc' => 'Direction and custom choreography for shows, events, and workshops.',
+        'desc' => 'Design, direction and custom choreography for shows, events, and workshops.',
         'hint' => 'Services: book for choreography or book for your Workshop',
     ],
 ];

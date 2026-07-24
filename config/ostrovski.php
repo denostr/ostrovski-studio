@@ -46,7 +46,7 @@ return [
     | media:optimize` generates the .webp variants from the JPG originals;
     | a PublicPagesTest guard asserts every referenced file has an entry
     | here. The hero renders at up to ~half the viewport (full width on
-    | mobile); IMG_5286 fills the wide show card (~1400 CSS px) and is
+    | mobile); IMG_5287 fills the wide show card (~1400 CSS px) and is
     | shown upscaled past its full 1440px original width, so it gets the
     | least lossy compression; the rest render at max 460 CSS px
     | (920 retina).
@@ -57,7 +57,7 @@ return [
         'IMG_5283' => [1920, 82],
         'IMG_5234' => [1000, 82],
         'IMG_5282' => [1000, 82],
-        'IMG_5286' => [1440, 95],
+        'IMG_5286' => [1000, 82],
         'IMG_5287' => [1000, 82],
         'IMG_5285' => [1000, 82],
     ],

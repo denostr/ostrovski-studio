@@ -11,19 +11,19 @@ return [
     'dj' => [
         'kicker' => '01 / DJ',
         'title' => 'DJ für dein Event',
-        'desc' => 'Clubtaugliche DJ-Sets, verwurzelt in elektronischer Musik, abgestimmt auf die Atmosphäre deines Events.',
+        'desc' => 'Individuelle DJ-Sets, verwurzelt in elektronischer Musik, abgestimmt auf die Atmosphäre deines Events.',
     ],
 
     'dj_lessons' => [
         'kicker' => '02 / Unterricht',
         'title' => 'DJ-Unterricht',
-        'desc' => 'Einzel- und Kleingruppenunterricht — vom ersten Mix bis zu clubtauglichen Sets.',
+        'desc' => 'Privater DJ-Unterricht — für Anfänger bis Fortgeschrittene.',
     ],
 
     'choreo' => [
         'kicker' => '03 / Show',
         'title' => 'Show-Regie / Choreografie für dein Event',
-        'desc' => 'Regie und maßgeschneiderte Choreografie für Shows, Events und Workshops.',
+        'desc' => 'Design, Regie und maßgeschneiderte Choreografie für Shows, Events und Workshops.',
         'hint' => 'Leistungen: Buchung für Choreografie oder für deinen Workshop',
     ],
 ];
