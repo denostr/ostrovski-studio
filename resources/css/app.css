@@ -1113,6 +1113,11 @@ a:hover {
     text-align: center;
 }
 
+.cf-turnstile {
+    display: flex;
+    justify-content: center;
+}
+
 .consent-field {
     display: flex;
     align-items: flex-start;
